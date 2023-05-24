@@ -13,20 +13,23 @@ export const Home = () => {
     console.log("Me ejecute");
     dispatch(getPokemons());
   };
-  const searchData = () => {
+  const searchData = (event) => {
+    console.log(event)
     dispatch(searchPokemon(pokemon));
     console.log("Busque ", buscarPokemon);
   };
   const changeRoute = () => {
     navigate("/create");
   };
+  console.log(useSelector((pepe) => pepe))
   return (
     <div>
       {pokemon?.map((item, index) => {
         return <p key={index}>{item.name}</p>;
       })}
       <button onClick={traerData}>Traer</button>
-      <button onClick={searchData}>Buscar</button>
+      <input type="text" id="buscarPokemon" ></input>
+      <button onClick={(event)=>searchData (event)}>Buscar</button>
       <button onClick={changeRoute}>llevame a crear un pokemon</button>
     </div>
   );
